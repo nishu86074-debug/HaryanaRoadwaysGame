@@ -261,4 +261,46 @@ const HaryanaRoadwaysGame = () => {
   if (gameState.gameOver || gameState.gameWon) {
     return (
       <LinearGradient colors={['#dbeafe', '#bbf7d0']} style={styles.container}>
-        <StatusBar style="
+        <StatusBar style="auto" />
+        <View style={styles.endScreen}>
+          <Text style={[styles.endTitle, { color: gameState.gameWon ? '#10b981' : '#ef4444' }]}>
+            {gameState.gameWon ? 'Congratulations! Full Tour Complete!' : 'Game Over - Tour Incomplete'}
+          </Text>
+          <Text style={styles.endText}>
+            {gameState.gameWon ? 'You covered all Haryana depots like a pro driver!' : 'Fuel ran out or bus damaged. Try again!'}
+          </Text>
+          <TouchableOpacity style={styles.button} onPress={restartGame}>
+            <Text style={styles.buttonText}>Play Again</Text>
+          </TouchableOpacity>
+        </View>
+      </LinearGradient>
+    );
+  }
+
+  return (
+    <LinearGradient colors={['#dbeafe', '#bbf7d0']} style={styles.container}>
+      <StatusBar style="auto" />
+      <ScrollView style={styles.scrollView}>
+        <Text style={styles.title}>Haryana Roadways Bus Simulator</Text>
+        <Text style={styles.subtitle}>Drive from Chandigarh to Faridabad - All Depots!</Text>
+        
+        <View style={styles.statsRow}>
+          <View style={styles.statCard}>
+            <Text style={styles.statLabel}>Time</Text>
+            <Text style={styles.statValue}>{formatTime(gameState.time)} / 8h</Text>
+          </View>
+          <View style={styles.statCard}>
+            <Text style={styles.statLabel}>Speed</Text>
+            <Text style={styles.statValue}>{gameState.speed} km/h</Text>
+          </View>
+          <View style={styles.statCard}>
+            <Text style={styles.statLabel}>Satisfaction</Text>
+            <ProgressBar value={gameState.passengerSatisfaction} color="#10b981" />
+            <Text style={styles.statValue}>{gameState.passengerSatisfaction}%</Text>
+          </View>
+          <View style={styles.statCard}>
+            <Text style={styles.statLabel}>Bus Condition</Text>
+            <ProgressBar value={gameState.busCondition} color="#f59e0b" />
+            <Text style={styles.statValue}>{gameState.busCondition}%</Text>
+          </View>
+          <View style={styles
