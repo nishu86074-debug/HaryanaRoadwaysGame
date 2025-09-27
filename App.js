@@ -303,4 +303,4 @@ const HaryanaRoadwaysGame = () => {
             <ProgressBar value={gameState.busCondition} color="#f59e0b" />
             <Text style={styles.statValue}>{gameState.busCondition}%</Text>
           </View>
-          <View style={styles
+          <View style={styles.statCard}>
